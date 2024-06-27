@@ -1,0 +1,81 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import ThumbnailIcon from "@/components/ThumbnailIcon.astro";
+import HDIcon from "@/icons/Rocket.astro";
+import PercentIcon from "@/icons/P2P.astro";
+import RainbowIcon from "@/icons/Copyright.astro";
+import image from "@/assets/feature-img-1.jpg";
+
+import "@/styles/base.css";
+import FeatureSection from "@/marketing/FeatureSection.astro";
+---
+
+<Layout title="Simple Hero Section">
+  <main class="linear-bg flex min-h-dvh p-4">
+    <div
+      class="flex w-full items-center justify-center rounded-md bg-primary shadow-sm tablet:shadow-md desktop:shadow-lg"
+    >
+      <FeatureSection image={image} alignment="right">
+        <Fragment slot={"tagline"}>Best-in-class support</Fragment>
+        <Fragment slot={"headline"}>
+          Convenience and licensing that empowers
+        </Fragment>
+        <Fragment slot={"description"}>
+          In a world where storytelling constantly evolves, don't let licensing
+          and poor support hold you down.
+        </Fragment>
+
+        <ul class="flex flex-col gap-y-10">
+          <li class="flex gap-5">
+            <ThumbnailIcon>
+              <HDIcon class="text-icon-brand-emphasize h-6 w-6" />
+            </ThumbnailIcon>
+            <div class="flex w-full flex-col gap-2 py-2.5">
+              <h2 class="text-lg font-semibold">Faster downloads</h2>
+              <p>
+                Our robust servers are primed to deliver the highest resolution
+                images swiftly, ensuring a smooth download experience.
+              </p>
+            </div>
+          </li>
+          <li class="flex gap-5">
+            <ThumbnailIcon>
+              <PercentIcon class="text-icon-brand-emphasize h-6 w-6" />
+            </ThumbnailIcon>
+            <div class="flex w-full flex-col gap-2 py-2.5">
+              <h2 class="text-lg font-semibold">Convenience for teams</h2>
+              <p>
+                Your single account can accommodate multiple users
+                simultaneously downloading without any disruptions, streamlining
+                teamwork and productivity.
+              </p>
+            </div>
+          </li>
+          <li class="flex gap-5">
+            <ThumbnailIcon>
+              <RainbowIcon class="text-icon-brand-emphasize h-6 w-6" />
+            </ThumbnailIcon>
+            <div class="flex w-full flex-col gap-2 py-2.5">
+              <h2 class="text-lg font-semibold">Royalty-free licensing</h2>
+              <p>
+                Our straightforward, royalty-free licensing means your chosen
+                images are yours to innovate with, without the hassle of
+                negotiating usage rights for every new project.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </FeatureSection>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .linear-bg {
+    background: linear-gradient(148deg, #f9fafb 8.89%, #d2d6db 100.48%);
+  }
+
+  .linear-hero {
+    background: linear-gradient(176deg, #f9fafb 0.94%, #edf0f3 316.54%);
+  }
+</style>

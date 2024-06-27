@@ -1,0 +1,146 @@
+---
+type Props = {
+  variant?:
+    | "primary"
+    | "secondary"
+    | "tertiary"
+    | "destructive"
+    | "link-color"
+    | "link-gray";
+  size?: "sm" | "md" | "lg" | "xl" | "2xl";
+  disabled?: boolean; // Links cannot be disabled
+  target?: "_blank" | "_parent" | "_self" | "_top";
+  href?: string;
+  ariaLabel?: string;
+  class?: string;
+};
+
+const {
+  variant = "primary",
+  size = "md",
+  disabled = false,
+  href = "",
+  target,
+  ariaLabel,
+  class: className,
+} = Astro.props;
+
+const hasPrefixSlot = Astro.slots.has("prefix");
+const hasDefaultSlot = Astro.slots.has("default");
+const hasSuffixSlot = Astro.slots.has("suffix");
+const isLnkBtn = ["link-color", "link-gray"].includes(variant);
+const isIconOnly = (hasPrefixSlot || hasSuffixSlot) && !hasDefaultSlot;
+---
+
+{
+  !isLnkBtn && (
+    <button
+      class:list={[
+        "focus-ring flex items-center justify-center rounded font-medium transition-colors duration-200 ease-linear disabled:bg-disabled disabled:text-disabled",
+        className,
+
+        variant === "primary" &&
+          "bg-brand text-primary-invert shadow-base hover:bg-brand-emphasize focus:ring-brand",
+        variant === "secondary" &&
+          "border border-primary bg-primary text-primary shadow-base hover:bg-primary-hover hover:text-primary-hover focus:ring-brand",
+        variant === "tertiary" &&
+          "text-brand hover:bg-primary-hover focus:ring-brand",
+        variant === "destructive" &&
+          "border border-transparent bg-error text-primary-invert hover:bg-error-emphasize focus:border-error focus:bg-error-emphasize focus:ring-error",
+
+        // Buttons
+        !isIconOnly && size === "sm" && "gap-1 px-3 py-2 text-sm",
+        !isIconOnly && size === "md" && "gap-1 px-3.5 py-2.5 text-sm",
+        !isIconOnly && size === "lg" && "gap-1.5 px-4 py-2.5",
+        !isIconOnly && size === "xl" && "gap-1.5 px-5 py-3",
+        !isIconOnly && size === "2xl" && "gap-2.5 px-6 py-4 text-lg",
+
+        // Icon Buttons
+        isIconOnly && size === "sm" && "p-2",
+        isIconOnly && size === "md" && "p-2.5",
+        isIconOnly && size === "lg" && "p-3",
+        isIconOnly && size === "xl" && "p-3.5",
+        isIconOnly && size === "2xl" && "p-4",
+      ]}
+      disabled={disabled}
+      aria-label={ariaLabel}
+    >
+      <span
+        class:list={[
+          "shrink-0",
+          hasPrefixSlot && size !== "2xl" && "h-5 w-5",
+          hasPrefixSlot && size === "2xl" && "h-6 w-6",
+          !hasPrefixSlot && "hidden",
+        ]}
+      >
+        <slot name="prefix" />
+      </span>
+
+      <span class={`${hasDefaultSlot ? "px-0.5" : ""}`}>
+        <slot />
+      </span>
+
+      <span
+        class:list={[
+          "shrink-0",
+          hasSuffixSlot && size !== "2xl" && "h-5 w-5",
+          hasSuffixSlot && size === "2xl" && "h-6 w-6",
+          !hasSuffixSlot && "hidden",
+        ]}
+      >
+        <slot name="suffix" />
+      </span>
+    </button>
+  )
+}
+
+{
+  isLnkBtn && (
+    <a
+      href={href}
+      class:list={[
+        "focus-ring flex items-center justify-center rounded font-medium transition-colors duration-200 ease-linear focus:ring-brand",
+        className,
+
+        variant === "link-color" && "text-brand hover:text-brand-emphasize",
+        variant === "link-gray" && "text-secondary hover:text-primary",
+
+        // Link Buttons
+        !isIconOnly && size === "sm" && "gap-1 text-sm",
+        !isIconOnly && size === "md" && "gap-1 text-sm",
+        !isIconOnly && size === "lg" && "gap-1.5",
+        !isIconOnly && size === "xl" && "gap-1.5",
+        !isIconOnly && size === "2xl" && "gap-2.5 text-lg",
+      ]}
+      target={target ?? undefined}
+      rel={target && "noreferrer noopener"}
+      aria-label={ariaLabel}
+    >
+      <span
+        class:list={[
+          "shrink-0",
+          hasPrefixSlot && size !== "2xl" && "h-5 w-5",
+          hasPrefixSlot && size === "2xl" && "h-6 w-6",
+          !hasPrefixSlot && "hidden",
+        ]}
+      >
+        <slot name="prefix" />
+      </span>
+
+      <span class={`${hasDefaultSlot ? "px-0.5" : ""}`}>
+        <slot />
+      </span>
+
+      <span
+        class:list={[
+          "shrink-0",
+          hasSuffixSlot && size !== "2xl" && "h-5 w-5",
+          hasSuffixSlot && size === "2xl" && "h-6 w-6",
+          !hasSuffixSlot && "hidden",
+        ]}
+      >
+        <slot name="suffix" />
+      </span>
+    </a>
+  )
+}

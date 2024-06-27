@@ -1,0 +1,17 @@
+---
+import Check from "./Check.astro";
+
+type Props = {
+  bg?: string;
+  fill?: string;
+};
+---
+
+<span
+  class:list={[
+    "inline-flex h-6 w-6 items-center justify-center rounded-full",
+    Astro.props.bg || "bg-brand-subtle",
+  ]}
+>
+  <Check class:list={["h-6 w-6", Astro.props.fill || "text-icon-brand"]} />
+</span>

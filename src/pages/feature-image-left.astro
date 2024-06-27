@@ -1,0 +1,77 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import ThumbnailIcon from "@/components/ThumbnailIcon.astro";
+import HDIcon from "@/icons/HD.astro";
+import PercentIcon from "@/icons/WaterPercent.astro";
+import RainbowIcon from "@/icons/Rainbow.astro";
+import image from "@/assets/feature-img-2.jpg";
+
+import "@/styles/base.css";
+import FeatureSection from "@/marketing/FeatureSection.astro";
+---
+
+<Layout title="Simple Hero Section">
+  <main class="linear-bg flex min-h-dvh p-4">
+    <div
+      class="flex w-full items-center justify-center rounded-md bg-primary shadow-sm tablet:shadow-md desktop:shadow-lg"
+    >
+      <FeatureSection image={image}>
+        <Fragment slot={"tagline"}>High quality images</Fragment>
+        <Fragment slot={"headline"}>For designers, by designers</Fragment>
+        <Fragment slot={"description"}>
+          Unleash boundless creativity with a large repository of images
+          optimized for designers
+        </Fragment>
+
+        <ul class="flex flex-col gap-y-10">
+          <li class="flex gap-5">
+            <ThumbnailIcon>
+              <HDIcon class="text-icon-brand-emphasize h-6 w-6" />
+            </ThumbnailIcon>
+            <div class="flex w-full flex-col gap-2 py-2.5">
+              <h2 class="text-lg font-semibold">5K resolution support</h2>
+              <p>
+                All images boast a minimum resolution of 5K, ensuring crisp,
+                crystal-clear quality.
+              </p>
+            </div>
+          </li>
+          <li class="flex gap-5">
+            <ThumbnailIcon>
+              <PercentIcon class="text-icon-brand-emphasize h-6 w-6" />
+            </ThumbnailIcon>
+            <div class="flex w-full flex-col gap-2 py-2.5">
+              <h2 class="text-lg font-semibold">From water to glass</h2>
+              <p>
+                We offer a wide array of abstractions, ranging from water to
+                glass, and encompassing various styles including 3D and vector.
+              </p>
+            </div>
+          </li>
+          <li class="flex gap-5">
+            <ThumbnailIcon>
+              <RainbowIcon class="text-icon-brand-emphasize h-6 w-6" />
+            </ThumbnailIcon>
+            <div class="flex w-full flex-col gap-2 py-2.5">
+              <h2 class="text-lg font-semibold">Portrait or landscape</h2>
+              <p>
+                Effortlessly adapt your images for any platform - whether it's a
+                stunning wallpaper or captivating Instagram reels and stories.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </FeatureSection>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .linear-bg {
+    background: linear-gradient(148deg, #f9fafb 8.89%, #d2d6db 100.48%);
+  }
+
+  .linear-hero {
+    background: linear-gradient(176deg, #f9fafb 0.94%, #edf0f3 316.54%);
+  }
+</style>

@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-lg font-semibold leading-7 text-primary;
+  }
+
+  p {
+    @apply text-base font-normal text-secondary;
+  }
+
+  button {
+    @apply text-base font-medium;
+  }
+}
+
+@layer utilities {
+  .focus-ring {
+    @apply focus:outline-none focus:ring-4;
+  }
+
+  .grid-layout {
+    @apply grid grid-cols-4 gap-x-4 tablet:grid-cols-6 tablet:gap-8 desktop:max-w-7xl desktop:grid-cols-12;
+  }
+}

@@ -1,0 +1,17 @@
+---
+type Props = {
+  class?: string;
+};
+---
+
+<svg
+  class={Astro.props.class}
+  width={Astro.props.class ? undefined : "20"}
+  height={Astro.props.class ? undefined : "20"}
+  viewBox="0 0 24 24"
+  aria-hidden="true"
+  xmlns="http://www.w3.org/2000/svg"
+  ><path
+    d="M7.05 8.05 12 3.1l4.95 4.95a7 7 0 1 1-9.9 0Zm11.31-1.42L12 .27 5.64 6.63a9 9 0 1 0 12.72 0Zm-2.12 3.54-1.41-1.41-7.07 7.07 1.41 1.41 7.07-7.07Zm-8.13 1.06a1.5 1.5 0 1 0 2.12-2.12 1.5 1.5 0 0 0-2.12 2.12Zm7.78 5.66a1.5 1.5 0 1 1-2.12-2.12 1.5 1.5 0 0 1 2.12 2.12Z"
+    fill="currentColor"></path>
+</svg>

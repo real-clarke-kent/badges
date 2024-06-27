@@ -1,0 +1,26 @@
+---
+type Props = {
+  size: "sm" | "md" | "lg";
+  variant: "neutral" | "error" | "warning" | "success" | "brand";
+};
+
+const { size, variant } = Astro.props;
+---
+
+<span
+  class:list={[
+    "h-fit w-fit rounded-full border",
+    variant === "neutral" && "bg-neutral-subtle border-primary text-secondary",
+    variant === "error" && "border-error-subtle bg-error-subtle text-error",
+    variant === "warning" &&
+      "border-warning-subtle bg-warning-subtle text-warning",
+    variant === "success" && "border-success bg-success-subtle text-success",
+    variant === "brand" && "border-brand-subtle bg-brand-subtle text-brand",
+
+    size === "sm" && "text-xs px-1.5 py-0.5",
+    size === "md" && "px-2 py-0.5 text-sm",
+    size === "lg" && "px-2.5 py-1 text-sm",
+  ]}
+>
+  <slot />
+</span>

@@ -1,0 +1,32 @@
+---
+import { Image } from "astro:assets";
+
+type Props = {
+  image: ImageMetadata;
+  height?: number;
+  width?: number;
+  loading?: "eager" | "lazy";
+  class?: string;
+};
+
+const {
+  loading = "lazy",
+  image,
+  height = image.height,
+  width = image.width,
+  class: className,
+} = Astro.props;
+---
+
+<Image
+  src={image}
+  alt=""
+  width={width}
+  height={height}
+  class:list={[
+    "shrink-0 rounded-full object-cover",
+    className ? className : "h-12 w-12",
+  ]}
+  densities={[1, 1.5, 2]}
+  loading={loading}
+/>

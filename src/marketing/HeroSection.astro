@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+
+type Props = {
+  image: ImageMetadata;
+};
+
+const { image } = Astro.props;
+---
+
+<section
+  class="grid-layout mx-4 my-12 flex auto-rows-max items-center gap-y-12 tablet:mx-4 tablet:my-16 tablet:gap-y-8 desktop:mx-24 desktop:my-24"
+>
+  <header
+    class="col-span-full grid grid-cols-subgrid gap-y-8 tablet:gap-y-16 desktop:col-span-5"
+  >
+    <div class="col-span-full flex flex-col gap-y-8 tablet:gap-y-16">
+      <slot name="header" />
+      <slot name="body" />
+    </div>
+
+    <div class="col-span-full grid grid-cols-subgrid">
+      <slot />
+    </div>
+  </header>
+
+  <Image
+    src={image}
+    alt=""
+    width={image.width}
+    height={image.height}
+    densities={[1, 1.5, 2]}
+    loading="eager"
+    class="col-span-full rounded-2xl desktop:col-span-7"
+  />
+</section>

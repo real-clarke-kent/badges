@@ -1,0 +1,42 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Badge from "@/components/Badge.astro";
+
+import "@/styles/base.css";
+---
+
+<Layout title="Great Frontend Projects">
+  <main class="flex min-h-dvh justify-center bg-primary py-[200px]">
+    <div class="flex h-fit w-[240px] flex-wrap items-center gap-6">
+      <Badge variant="neutral" size="sm">Label</Badge>
+      <Badge variant="neutral" size="md">Label</Badge>
+      <Badge variant="neutral" size="lg">Label</Badge>
+
+      <Badge variant="error" size="sm">Label</Badge>
+      <Badge variant="error" size="md">Label</Badge>
+      <Badge variant="error" size="lg">Label</Badge>
+
+      <Badge variant="warning" size="sm">Label</Badge>
+      <Badge variant="warning" size="md">Label</Badge>
+      <Badge variant="warning" size="lg">Label</Badge>
+
+      <Badge variant="success" size="sm">Label</Badge>
+      <Badge variant="success" size="md">Label</Badge>
+      <Badge variant="success" size="lg">Label</Badge>
+
+      <Badge variant="brand" size="sm">Label</Badge>
+      <Badge variant="brand" size="md">Label</Badge>
+      <Badge variant="brand" size="lg">Label</Badge>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .linear-bg {
+    background: linear-gradient(148deg, #f9fafb 8.89%, #d2d6db 100.48%);
+  }
+
+  .linear-hero {
+    background: linear-gradient(176deg, #f9fafb 0.94%, #edf0f3 316.54%);
+  }
+</style>

@@ -1,0 +1,82 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Hero from "@/marketing/HeroSection.astro";
+import Button from "@/components/Button.astro";
+import CheckFilled from "@/icons/CheckFilled.astro";
+import heroImg from "@/assets/prism2.png";
+
+import "@/styles/base.css";
+---
+
+<Layout title="Simple Hero Section">
+  <main class="linear-bg flex min-h-dvh p-4">
+    <div
+      class="flex w-full items-center justify-center rounded-md bg-primary shadow-sm tablet:py-2 tablet:shadow-md desktop:shadow-lg"
+    >
+      <Hero image={heroImg}>
+        <h1
+          class="text-4xl font-semibold tablet:text-5xl desktop:text-6xl"
+          slot="header"
+        >
+          Premium abstract images
+        </h1>
+
+        <ul class="flex flex-col gap-5 text-secondary" slot="body">
+          <li class="flex items-center gap-3 text-lg">
+            <CheckFilled /> Minimum 5K image resolution
+          </li>
+          <li class="flex items-center gap-3 text-lg">
+            <CheckFilled /> Various format variants available
+          </li>
+          <li class="flex items-center gap-3 text-lg">
+            <CheckFilled /> Retina display support
+          </li>
+        </ul>
+
+        <Fragment>
+          <!-- 
+            This part is terrible and pushes a pure Astro model to the limit.
+          -->
+          <Button
+            variant="secondary"
+            size="2xl"
+            class="col-span-2 hidden h-min tablet:flex"
+          >
+            Learn more
+          </Button>
+          <Button
+            variant="secondary"
+            size="xl"
+            class="order-1 col-span-2 h-min tablet:hidden"
+          >
+            Learn more
+          </Button>
+          <Button
+            variant="primary"
+            size="2xl"
+            class="col-span-2 hidden h-min tablet:flex"
+          >
+            See pricing
+          </Button>
+          <Button
+            variant="primary"
+            size="xl"
+            class="col-span-2 h-min tablet:hidden"
+          >
+            See pricing
+          </Button>
+        </Fragment>
+      </Hero>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .linear-bg {
+    background: linear-gradient(148deg, #f9fafb 8.89%, #d2d6db 100.48%);
+  }
+
+  .linear-hero {
+    background: linear-gradient(176deg, #f9fafb 0.94%, #edf0f3 316.54%);
+  }
+</style>

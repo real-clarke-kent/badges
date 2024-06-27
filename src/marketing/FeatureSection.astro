@@ -1,0 +1,51 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+type Props = {
+  image: ImageMetadata;
+  alignment?: "left" | "right";
+};
+
+const { image, alignment = "left" } = Astro.props;
+---
+
+<section
+  class="grid-layout mx-3 my-12 gap-y-12 tablet:mx-4 tablet:my-16 tablet:gap-y-12 desktop:mx-24 desktop:my-24 desktop:gap-y-16"
+>
+  <header
+    class="col-span-full flex flex-col items-center gap-y-5 tablet:pb-4 desktop:px-40 desktop:pb-0"
+  >
+    <div class="flex w-full flex-col items-center gap-y-3 desktop:px-10">
+      <p class="font-semibold text-brand">
+        <slot name="tagline" />
+        <h1
+          class="text-3xl text-balance text-center font-semibold text-primary tablet:text-5xl"
+        >
+          <slot name="headline" />
+        </h1>
+      </p>
+    </div>
+    <p class="text-balance text-center text-lg tablet:text-xl">
+      <slot name="description" />
+    </p>
+  </header>
+
+  <div
+    class:list={[
+      "col-span-full desktop:col-span-6",
+      alignment === "right" && "order-1",
+    ]}
+  >
+    <slot />
+  </div>
+
+  <Image
+    src={image}
+    alt=""
+    width={image.width}
+    height={image.height}
+    densities={[1, 1.5, 2]}
+    class="col-span-full max-h-[180px] rounded-xl object-cover shadow-lg tablet:max-h-[394px] desktop:col-span-6"
+  />
+</section>
